@@ -1,6 +1,6 @@
 #/bin/bash
 ##宝塔去除账号绑定:(分别运行以下4句命令行, 针对7.6.0版本有效)
-which perl
+cmdwhich=`which perl`
 if [[ $? -ne 0 ]];then
   echo '准备安装Perl';
   yum install -q -y perl
