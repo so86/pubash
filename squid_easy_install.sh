@@ -1,4 +1,24 @@
 #!/bin/bash
+##控制台字体颜色
+cblack_start="\033[30m"
+cred_start="\033[31m"
+cgreen_start="\033[32m"
+cyellow_start="\033[33m"
+cblue_start="\033[34m"
+cpurple_start="\033[35m"
+cbluesky_start="\033[36m"
+cwhite_start="\033[37m"
+##控制台字体颜色(带背景色)
+cb_white_bgblack_start="\033[40;37m"
+cb_black_bgwhite_start="\033[41;30m"
+cb_blue_bggreen_start="\033[42;34m"
+cb_blue_bgyellow_start="\033[43;34m"
+cb_black_bgblue="\033[44;30m"
+cb_black_bgpurple_start="\033[45;30m"
+cb_black_bgbluesky_start="\033[46;30m"
+cb_blue_bgwhite_start="\033[47;34m"
+##控制台字体样式结束符
+color_end="\033[0m"
 
 if [ $# -lt 2 ]; then
     echo '缺少参数';
@@ -7,9 +27,6 @@ if [ $# -lt 2 ]; then
 fi;
 default_user=$1
 default_passwd=$2
-echo $default_user;
-echo $default_passwd;
-exit 0;
 
 echo '开始自动化部署Squid代理服务'
 sleep 3;
@@ -107,5 +124,9 @@ if [[ $? -ne 0 ]];then
     ipaddr='服务器IP地址'
 fi;
 echo ""
-echo "代理服务地址: ${default_user}:${default_passwd}@${ipaddr}:3128"
+printf "代理服务地址: ${cred_start}${default_user}:${default_passwd}@${ipaddr}:3128${color_end}\n"
 echo ""
+echo "注意:如果代理服务无法正常访问,请检查防火墙是否放行代理端口:"
+echo "放行特定端口参考如下命令:(仅适用于Centos7和8)"
+echo "firewall-cmd --zone=public --add-port=3128/tcp --permanent&&echo '开放3218端口'"
+echo "firewall-cmd --reload&&echo '更新配置'"
