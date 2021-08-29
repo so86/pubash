@@ -130,4 +130,4 @@ echo "注意:如果代理服务无法正常访问,请检查防火墙是否放行
 echo "放行特定端口参考如下命令:(仅适用于Centos7和8)"
 echo "echo '列出已放行的端口'&&firewall-cmd --zone=public --list-ports"
 echo "echo '开放3218端口'&&firewall-cmd --zone=public --add-port=3128/tcp --permanent"
-echo "echo '激活配置'&&firewall-cmd --reload"
+echo "echo '使配置生效'&&firewall-cmd --reload"
