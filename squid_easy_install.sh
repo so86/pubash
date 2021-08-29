@@ -2,11 +2,14 @@
 
 if [ $# -lt 2 ]; then
     echo '缺少参数';
-    echo "`basename $0` <user> <password>";
+    echo "sh squid_easy_install.sh <user> <password>";
     exit -1;
 fi;
 default_user=$1
 default_passwd=$2
+echo default_user;
+echo default_passwd;
+exit 0;
 
 echo '开始自动化部署Squid代理服务'
 sleep 3;
